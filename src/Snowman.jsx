@@ -75,10 +75,10 @@ function Snowman({
 
   return (
       <div className="Snowman">
-        <img src={(images)[nWrong]} alt={nWrong} />
+        {nWrong > maxWrong ? <img src={(images)[images.length - 1]} alt={nWrong}/> : <img src={(images)[nWrong]} alt={nWrong}/>}
         <p className="Snowman-n-wrong">Number wrong: {nWrong}</p>
-        <p className="Snowman-word">{guessedWord()}</p>
-        <p>{generateButtons()}</p>
+        {nWrong > maxWrong ? <p>{answer}</p> : <p className="Snowman-word">{guessedWord()}</p>}
+        {nWrong > maxWrong ? <p>You Lose!</p> : <p>{generateButtons()}</p>}
       </div>
   );
 }

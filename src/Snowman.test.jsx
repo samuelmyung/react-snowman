@@ -28,14 +28,17 @@ import Snowman from "./Snowman";
 it('no more than 6 wrong guesses', function () {
     const { container } = render(
         <Snowman
-          maxWrong={2}
+          maxWrong={1}
           images={[]}
           words={["apple"]}
         />
     );
 
-    const button = container.querySelector(".bi-arrow-right-circle");
-    fireEvent.click(rightArrow)
+    const buttonB = container.querySelector('[value="b"]');
+    fireEvent.click(buttonB)
+    const buttonC = container.querySelector('[value="c"]');
+    fireEvent.click(buttonC)
 
-    expect(container)
+    expect(container).toContainHTML('You Lose!');
+    expect(container).not.toContainHTML('<button value="a">a</button>');
 })
