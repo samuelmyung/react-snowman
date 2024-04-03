@@ -14,16 +14,22 @@ import Snowman from "./Snowman";
 // });
 
 
-// it('matches snapshot', function () {
-//   const { container } = render(
-//     <Snowman
-//       photos={TEST_IMAGES}
-//       title="images for testing"
-//     />
-//   );
+it('matches snapshot', function () {
+  const { container } = render(
+    <Snowman
+    maxWrong={1}
+    images={[]}
+    words={["apple"]}
+    />
 
-//   expect(container).toMatchSnapshot();
-// });
+  );
+  const buttonB = container.querySelector('[value="b"]');
+  fireEvent.click(buttonB)
+  const buttonC = container.querySelector('[value="c"]');
+  fireEvent.click(buttonC)
+
+  expect(container).toMatchSnapshot();
+});
 
 it('no more than 6 wrong guesses', function () {
     const { container } = render(
